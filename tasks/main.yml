@@ -1,2 +1,33 @@
 ---
-# tasks file for template
+- name: make the ssh group
+  group:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - docker
+    - ssh
+
+- name: making new user
+  user:
+    name="{{ user.name }}"
+    home="{{ user.home }}"
+    groups=docker,ssh
+    shell=/bin/zsh
+    state=present
+
+- name: add user ssh_key
+  user:
+    name="{{ user.name }}"
+    generate_ssh_key=yes
+    ssh_key_bits=4096
+    ssh_key_file=".ssh/{{ user.name }}"
+
+- name: set up key access
+  authorized_key:
+    user="{{ user.name }}"
+    key="{{ item }}"
+  with_file:
+    - serve.pub
+
+- name: setup sudoers
+  include: "sudo.yml"
