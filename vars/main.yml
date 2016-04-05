@@ -1,2 +1,8 @@
 ---
-# vars file for template
+users:
+   main:
+     name: lo
+     home: /home/lo
+   super:
+     name: hi
+     home: /home/hi
