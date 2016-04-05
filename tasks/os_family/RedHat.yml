@@ -1,0 +1,4 @@
+---
+- name: making sure sudo installed
+  yum: name=sudo state=present
+

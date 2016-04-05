@@ -1,0 +1,3 @@
+---
+- name: Install docker
+  zypper: name=sudo state=latest

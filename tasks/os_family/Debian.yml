@@ -1,0 +1,3 @@
+---
+- name: make sure sudo installed
+  apt: name=sudo state=present
