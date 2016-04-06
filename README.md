@@ -8,27 +8,35 @@ A brief description of the role goes here.
 Description
 -----------
 
-Give a description
+Provisions the client to have a new **super** user and **main** user. The **super** user is a user who will be used to administer the provisioned client. As such, it has direct access to all root capabilities but has no password associated with it. The only way to access the user would be through a **RSA** key connected for access to the user through the install. The **main** user is provisioned similar to that of **super** except that it only has access to running docker containers, journalctl, and systemctl programs. It does not have write access to anything on the system and is only used to manage the currently working setup of the containers running on the client.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The role has two variables that need to be changed, both dealing with user creation:
+
+``` yaml
+users.super
+users.main
+```
+
+Both the home and user name need to be changed to accomadate the use of the role.
+
 
 Requirements
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Does not need to have **docker** installed, but can be helpful in the process when adding the groups usage. It will create the **docker** group if the group does not exist on the client.
 
 Usage
 -----
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+The container needs the `vars/main.yml` variables of **super** and **main** changed as detailed on the description. Other than that, nothing else needs to be appended to be changed to run the role.
 
 ``` yaml
 - hosts: servers
     roles:
-        - { role: username.rolename, x: 42 }
+        - users
 ```
 
 Author Information
