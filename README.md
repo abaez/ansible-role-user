@@ -33,7 +33,7 @@ Usage
 
 You need to change the `files/serve.pub` to whatever is your public key for access to the user through **RSA** key authentication.
 
-The container also needs the `vars/main.yml` variables of **super** and **main** changed as detailed on the description. Other than that, nothing else needs to be appended to be changed to run the role.
+The container also needs the `defaults/main.yml` variables of **super** and **main** changed as detailed on the description. Other than that, nothing else needs to be appended to be changed to run the role.
 
 ``` yaml
 - hosts: servers
