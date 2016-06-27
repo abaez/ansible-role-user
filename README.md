@@ -1,9 +1,9 @@
-Role Name
+ansible-role-user
 =========
 [![license][2i]][2p]
 [![twitter][3i]][3p]
 
-A brief description of the role goes here.
+A small user creation for [docker] based provision.
 
 Description
 -----------
@@ -13,15 +13,19 @@ Provisions the client to have a new **super** user and **main** user. The **supe
 Role Variables
 --------------
 
-The role has two variables that need to be changed, both dealing with user creation:
+The role has two variable maps that need to be changed, both dealing with user creation:
 
 ``` yaml
-users.super
-users.main
+users.super:
+  name: # some user name to be the super user.
+  home: # the home for this super user.
+
+users.main:
+  name: # some user name for the regular user.
+  home: # some home for this regular user.
 ```
 
 Both the home and user name need to be changed to accomadate the use of the role.
-
 
 Requirements
 ------------
@@ -45,6 +49,8 @@ Author Information
 ------------------
 
 [Alejandro Baez][1]
+
+[docker]: https://www.docker.com/
 
 [1]: https://keybase.io/baez
 [2i]: https://img.shields.io/badge/license-BSD_2-green.svg
