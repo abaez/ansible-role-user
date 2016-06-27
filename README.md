@@ -19,13 +19,15 @@ The role has two variable maps that need to be changed, both dealing with user c
 users.super:
   name: # some user name to be the super user.
   home: # the home for this super user.
+  pub: # the ssh  pubkey you want to use for access to user.
 
 users.main:
   name: # some user name for the regular user.
   home: # some home for this regular user.
+  pub: # the ssh  pubkey you want to use for access to user.
 ```
 
-Both the home and user name need to be changed to accomadate the use of the role.
+All the home, pub, and user name need to be changed to accomadate the use of the role.
 
 Requirements
 ------------
@@ -35,9 +37,9 @@ Does not need to have **docker** installed, but can be helpful in the process wh
 Usage
 -----
 
-You need to change the `files/serve.pub` to whatever is your public key for access to the user through **RSA** key authentication.
+You **need** the `.pub` key value, listed in *Role Variables* above, to gain access to the user.
 
-The container also needs the `defaults/main.yml` variables of **super** and **main** changed as detailed on the description. Other than that, nothing else needs to be appended to be changed to run the role.
+The container also needs the `defaults/main.yml` variables of **super** and **main** changed as detailed on the description and *role variables*. Other than that, nothing else needs to be appended to be changed to run the role.
 
 ``` yaml
 - hosts: servers

@@ -3,6 +3,8 @@ users:
    main:
      name: lo
      home: /home/lo
+     pub: /path/to/pub/key
    super:
      name: hi
      home: /home/hi
+     pub: /path/to/pub/key
