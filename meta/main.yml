@@ -50,6 +50,9 @@ galaxy_info:
   - name: Debian
     versions:
     - all
+  - name: Alpine
+    versions:
+    - all
 
   galaxy_tags:
     - user

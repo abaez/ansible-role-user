@@ -1,0 +1,3 @@
+---
+- name: make sure sudo installed
+  apk: name=sudo state=present
