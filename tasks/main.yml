@@ -12,7 +12,7 @@
     name="{{ user.name }}"
     home="{{ user.home }}"
     groups=docker,ssh
-    shell=/bin/zsh
+    shell="{{ user.shell }}"
     state=present
 
 - name: add user ssh_key

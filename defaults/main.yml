@@ -3,8 +3,10 @@ users:
    main:
      name: lo
      home: /home/lo
+     shell: /bin/bash
      pub: /path/to/pub/key
    super:
      name: hi
      home: /home/hi
+     shell: /bin/bash
      pub: /path/to/pub/key
