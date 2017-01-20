@@ -1,3 +1,0 @@
----
-- name: Install sudo
-  zypper: name=sudo state=latest
