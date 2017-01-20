@@ -26,6 +26,3 @@
   authorized_key:
     user="{{ user.name }}"
     key="{{ lookup('file', user.pub) }}"
-
-- name: setup sudoers
-  include: "sudo.yml"
