@@ -3,12 +3,19 @@ ansible-role-user
 [![license][2i]][2p]
 [![twitter][3i]][3p]
 
-A small user creation for [docker] based provision.
+A small user creation for [docker], [sudo]  permission based provision.
 
 Description
 -----------
 
-Provisions the client to have a new **super** user and **main** user. The **super** user is a user who will be used to administer the provisioned client. As such, it has direct access to all root capabilities but has no password associated with it. The only way to access the user would be through a **RSA** key connected for access to the user through the install. The **main** user is provisioned similar to that of **super** except that it only has access to running docker containers, journalctl, and systemctl programs. It does not have write access to anything on the system and is only used to manage the currently working setup of the containers running on the client.
+Provisions the client to follow the [archlinux][5]'s wiki on building a secure **sudo** environment. The role is initially builds a user with the group access to:
+
+- ssh
+- docker
+
+With these groups, when run with the [sudo] role, you gain the abilities detailed on the [archlinux][5] sudo wiki guide. The normal use produced would only gain higher domain access through sudo to a system user. The normal user also does not have write access to anything on the system and is only used to manage the currently working setup of the containers running on the client through [docker]. This allows to keep the user from being compromised to a minimum.
+
+At the same time, with the use of the [sshd] role, you also gain the ability of keeping the user limited to remote access only through the **RSA** key.
 
 Role Variables
 --------------
@@ -16,15 +23,10 @@ Role Variables
 The role has two variable maps that need to be changed, both dealing with user creation:
 
 ``` yaml
-users.super:
-  name: # some user name to be the super user.
-  home: # the home for this super user.
-  pub: # the ssh  pubkey you want to use for access to user.
-
-users.main:
-  name: # some user name for the regular user.
-  home: # some home for this regular user.
-  pub: # the ssh  pubkey you want to use for access to user.
+user:
+  name: lo # some user name to be the normal user.
+  home: # the home for this user.
+  pub: # the ssh  pubkey you want to use for access to user remotely.
 ```
 
 All the home, pub, and user name need to be changed to accomadate the use of the role.
@@ -44,7 +46,7 @@ The container also needs the `defaults/main.yml` variables of **super** and **ma
 ``` yaml
 - hosts: servers
     roles:
-        - users
+        - abaez.user
 ```
 
 Author Information
@@ -59,3 +61,7 @@ Author Information
 [2p]: ./LICENSE
 [3i]: https://img.shields.io/badge/twitter-a_baez-blue.svg
 [3p]: https://twitter.com/a_baez
+[5]: https://wiki.archlinux.org/index.php/Sudo#Harden_with_Sudo_Example
+
+[sshd]: https://galaxy.ansible.com/abaez/sshd
+[sudo]: https://galaxy.ansible.com/abaez/sudo
