@@ -20,7 +20,7 @@ At the same time, with the use of the [sshd] role, you also gain the ability of 
 Role Variables
 --------------
 
-The role has two variable maps that need to be changed, both dealing with user creation:
+The role has three variable maps that need to be changed. All of these values deal with user access in the creation:
 
 ``` yaml
 user:
@@ -41,7 +41,7 @@ Usage
 
 You **need** the `.pub` key value, listed in *Role Variables* above, to gain access to the user.
 
-The container also needs the `defaults/main.yml` variables of **super** and **main** changed as detailed on the description and *role variables*. Other than that, nothing else needs to be appended to be changed to run the role.
+The container also needs the `defaults/main.yml` variables of **user** changed as detailed on the description and *role variables*. Other than that, nothing else needs to be appended to be changed to run the role.
 
 ``` yaml
 - hosts: servers
