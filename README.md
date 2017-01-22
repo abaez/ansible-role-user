@@ -3,7 +3,7 @@ ansible-role-user
 [![license][2i]][2p]
 [![twitter][3i]][3p]
 
-A small user creation for [docker], [sudo]  permission based provision.
+A user creation for [docker], [sudo], and [sshd] permission based provision.
 
 Description
 -----------
@@ -46,7 +46,18 @@ The container also needs the `defaults/main.yml` variables of **user** changed a
 ``` yaml
 - hosts: servers
     roles:
-        - abaez.user
+      - abaez.user
+```
+
+If you want to give that whole stricter permissions rules a go, then simply run the role along with the [sudo], [sshd], and [docker] role.
+
+``` yaml
+- hosts: servers
+    roles:
+      - abaez.docker
+      - abaez.user
+      - abaez.sshd
+      - abaez.sudo
 ```
 
 Author Information
@@ -54,7 +65,6 @@ Author Information
 
 [Alejandro Baez][1]
 
-[docker]: https://www.docker.com/
 
 [1]: https://keybase.io/baez
 [2i]: https://img.shields.io/badge/license-BSD_2-green.svg
@@ -65,3 +75,4 @@ Author Information
 
 [sshd]: https://galaxy.ansible.com/abaez/sshd
 [sudo]: https://galaxy.ansible.com/abaez/sudo
+[docker]: https://galaxy.ansible.com/abaez/docker
