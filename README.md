@@ -26,7 +26,7 @@ The role has three variable maps that need to be changed. All of these values de
 user:
   name: main # some user name to be the normal user.
   home: /home/main # the home for this user.
-  shell: /usr/bin/fish # the shell you want to use by location. 
+  shell: /bin/bash # the shell you want to use by location (optional). 
   pub: open.pub # the ssh  pubkey you want to use for access to user remotely.
 ```
 
