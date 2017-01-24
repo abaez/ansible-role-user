@@ -24,9 +24,10 @@ The role has three variable maps that need to be changed. All of these values de
 
 ``` yaml
 user:
-  name: lo # some user name to be the normal user.
-  home: # the home for this user.
-  pub: # the ssh  pubkey you want to use for access to user remotely.
+  name: main # some user name to be the normal user.
+  home: /home/main # the home for this user.
+  shell: /usr/bin/fish # the shell you want to use by location. 
+  pub: open.pub # the ssh  pubkey you want to use for access to user remotely.
 ```
 
 All the home, pub, and user name need to be changed to accomadate the use of the role.
