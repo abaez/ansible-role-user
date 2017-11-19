@@ -15,10 +15,11 @@
     shell: "{{ user.shell }}"
     state: present
 
-- name: add user ssh_key
+- name: create a user ssh_key
   user:
     name: "{{ user.name }}"
     generate_ssh_key: yes
+    ssh_key_type: "{{ user.keytype }}"
     ssh_key_file: ".ssh/{{ user.name }}"
 
 - name: set up key access

@@ -27,7 +27,8 @@ user:
   name: main # some user name to be the normal user.
   home: /home/main # the home for this user.
   shell: /bin/bash # the shell you want to use by location (optional). 
-  pub: open.pub # the ssh  pubkey you want to use for access to user remotely.
+  keytype: ed25519 # the key to associate for the user
+  pub: /path/to/pub/key # the ssh pubkey you want to use for access to user remotely.
 ```
 
 All the home, pub, and user name need to be changed to accomadate the use of the role.

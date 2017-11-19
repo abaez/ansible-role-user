@@ -3,4 +3,5 @@ user:
   name: lo
   home: /home/lo
   shell: /bin/bash
+  keytype: ed25519
   pub: /path/to/pub/key
