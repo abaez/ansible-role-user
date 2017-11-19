@@ -1,28 +1,27 @@
 ---
 - name: make the ssh group
   group:
-    name="{{ item }}"
-    state=present
+    name: "{{ item }}"
+    state: present
   with_items:
     - docker
     - ssh
 
 - name: making new user
   user:
-    name="{{ user.name }}"
-    home="{{ user.home }}"
-    groups=docker,ssh
-    shell="{{ user.shell }}"
-    state=present
+    name: "{{ user.name }}"
+    home: "{{ user.home }}"
+    groups: docker,ssh
+    shell: "{{ user.shell }}"
+    state: present
 
 - name: add user ssh_key
   user:
-    name="{{ user.name }}"
-    generate_ssh_key=yes
-    ssh_key_bits=4096
-    ssh_key_file=".ssh/{{ user.name }}"
+    name: "{{ user.name }}"
+    generate_ssh_key: yes
+    ssh_key_file: ".ssh/{{ user.name }}"
 
 - name: set up key access
   authorized_key:
-    user="{{ user.name }}"
-    key="{{ lookup('file', user.pub) }}"
+    user: "{{ user.name }}"
+    key: "{{ lookup('file', user.pub) }}"
